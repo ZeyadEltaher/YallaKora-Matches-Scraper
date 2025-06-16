@@ -56,7 +56,7 @@ This Python project scrapes football match data from the YallaKora website over 
 
 - If the table does not exist, it will be created automatically.
 
-- Time is handled carefully and stored in 24-hour format along with AM/PM period.
+- Time is handled carefully and stored in 12-hour format along with AM/PM period.
 
 - Errors during scraping of individual matches are logged but do not stop the entire process.
 
