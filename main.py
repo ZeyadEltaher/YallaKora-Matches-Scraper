@@ -4,7 +4,9 @@ import mysql.connector
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from datetime import datetime, timedelta
-from IPython.display import display
+from tabulate import tabulate
+import pandas as pd
+
 
 # connect to the database
 load_dotenv()
@@ -150,9 +152,12 @@ def get_matches_info(start_date, end_date):
 
 
 
-
-
-
-
-
+# IMPLEMENTING THE FUNCTIONS 
 get_matches_info("6/16/2025", "6/17/2025")
+
+# EXPORTING THE RESULTS IN A CSV FILE USING Pandas
+matches_df = pd.read_sql("SELECT * FROM matches", connect)
+matches_df.to_csv("matches_data.csv", index=False, encoding='utf-8-sig')
+
+# DISPLAYING THE RESULTS WITH tabulate
+print(tabulate(matches_df.head(), headers='keys', tablefmt='psql'))
